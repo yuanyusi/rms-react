@@ -60,7 +60,8 @@ export default class AvatarSimple extends React.Component {
 	}
 	
 	handleClick(contact) {
-    this.setState({person: contact});
+	this.setState({person: contact});
+    this.props.update(contact);
   }
   render() {
 	                 

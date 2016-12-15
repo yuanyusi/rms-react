@@ -144,12 +144,13 @@ class CustomMain extends Component {
 	}
 	
 	updatePerson(e) {
-		this.setState({ person: e.target.value,
-						persons: this.state.persons,
-						value: this.state.value,
-						displayCard: this.state.displayCard,
-						disabledFlag: this.state.disabledFlag
-						});    
+		this.setState({ person: e,
+						//persons: this.state.persons,
+						//value: this.state.value,
+						//displayCard: this.state.displayCard,
+						//disabledFlag: this.state.disabledFlag
+						});   
+						
 	}
   
     /**
@@ -188,7 +189,6 @@ class CustomMain extends Component {
 			documentElement = d.documentElement,
 			body = d.getElementsByTagName('body')[0],
 			width = w.innerWidth || documentElement.clientWidth || body.clientWidth;
-		//alert (this.state.width < 769);
 		if (this.state.width < 769){ 
 		this.setState({displayGrid: !this.state.displayGrid, displayCard: this.state.displayGrid});	
 		}  
@@ -236,16 +236,17 @@ class CustomMain extends Component {
 						<Grid style={{margin: '0px'}}>
 							<Cell col={4} style={{width: 'calc(50%)'}}>							
 								<div className="mdl-avatar mdl-js-avatar mdl-avatar--floating-label" >
-									<input className="mdl-avatar__input" type="text" name="profile_image" id="profile_image" value="images/pic.png" onChange={() => {}}/>
+									<input className="mdl-avatar__input" type="text" name="profile_image" id="profile_image" value={this.state.person.image} onChange={() => {}}/>
 									<label className="mdl-avatar__label" htmlFor="profile_image"><IconButton name="add_a_photo" /></label>
 								</div>
 
 								<Textfield
 									onChange={() => {}}
-									label="Text..."
+									label="Name"
 									floatingLabel
 									style={{width: '300px'}}
 									disabled={this.state.disabledFlag}
+									value={this.state.person.name}
 								/>
 								
 								<Textfield
@@ -264,6 +265,7 @@ class CustomMain extends Component {
 									style={{width: '300px'}}
 									floatingLabel
 									disabled={this.state.disabledFlag}
+									value={this.state.person.image}
 								/>
 
 							</Cell>
